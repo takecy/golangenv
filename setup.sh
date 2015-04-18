@@ -9,4 +9,4 @@ export GOROOT=$HOME/go
 export PATH=$PATH:$GOROOT/bin
 
 #git
-sudo yum intall git
+sudo yum install -y git
