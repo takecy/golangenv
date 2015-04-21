@@ -1,20 +1,23 @@
 - hosts: go
-  sudo: yes
   tasks:
     - name: get binary golang
       get_url: url=https://storage.googleapis.com/golang/go1.4.2.linux-amd64.tar.gz dest=/tmp
+      sudo: yes
 
     - name: unarchive go rutime
       command: tar -C /usr/local -xzf /tmp/go1.4.2.linux-amd64.tar.gz
+      sudo: yes
 
     - name: set environment variable PATH
-      command: export PATH=$PATH:/usr/local/go/bin
+      shell: echo export PATH=$PATH:/usr/local/go/bin > /home/vagrant/.bash_profile
 
     - name: install git
       yum: name=git state=latest
+      sudo: yes
 
     - name: install nginx
       yum: name=http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm state=present
+      sudo: yes
       # notify:
       #   - restart nginx
 
