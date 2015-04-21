@@ -1,7 +1,6 @@
 [go]
-localhost
+192.168.33.10
 
 [go:vars]
 ansible_ssh_port=22
 ansible_ssh_user=vagrant
-
