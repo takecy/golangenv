@@ -1,8 +1,14 @@
 - hosts: go
   sudo: yes
   tasks:
-    - name: install go rutime
-      yum: name=golang state=latest
+    - name: get binary golang
+      get_url: url=https://storage.googleapis.com/golang/go1.4.2.linux-amd64.tar.gz dest=/tmp
+
+    - name: unarchive go rutime
+      command: tar -C /usr/local -xzf /tmp/go1.4.2.linux-amd64.tar.gz
+
+    - name: set environment variable PATH
+      command: export PATH=$PATH:/usr/local/go/bin
 
     - name: install git
       yum: name=git state=latest
