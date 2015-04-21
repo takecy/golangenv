@@ -1,0 +1,8 @@
+- hosts: go
+  sudo: yes
+  tasks:
+    - name: install go rutime
+      yum: name=golang state=installed
+
+    - name: install nginx
+      yum: name=nginx state=installed
